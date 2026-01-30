@@ -6,10 +6,11 @@ public class SistemaPedidos {
 
     // Variables globales mal ubicadas y poco descriptivas
     public static double TASA_IVA = 0.21; // Esto es el IVA
-    public static String f = "reporte_pedidos.txt"; // Archivo de salida
+
     
     public static void main(String[] args) {
         System.out.println("INICIANDO SISTEMA DE PEDIDOS v1.0...");
+
         // --- CLIENTE 1: Datos dispersos ---
         String nombreCliente1 = "TechSolutions SL";
         String idCliente1 = "B12345678";
