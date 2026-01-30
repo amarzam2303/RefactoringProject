@@ -16,51 +16,51 @@ public class SistemaPedidos {
         String direccionCliente1 = "Calle Industria 55, Madrid";
 
         // --- CLIENTE 1: Lista de productos (Arrays paralelos, mala práctica) ---
-        ArrayList<String> p_n = new ArrayList<>(); // Nombres productos
+        ArrayList<String> nombreProductos = new ArrayList<>(); // Nombres productos
         nombreProductos.add("Servidor Dell PowerEdge");
-        p_n.add("Licencia Windows Server");
-        p_n.add("Cableado Estructurado");
+        nombreProductos.add("Licencia Windows Server");
+        nombreProductos.add("Cableado Estructurado");
 
-        ArrayList<Double> p_p = new ArrayList<>(); // Precios productos
+        ArrayList<Double> preciosProductos = new ArrayList<>(); // Precios productos
         preciosProductos.add(2500.00);
         preciosProductos.add(800.00);
         preciosProductos.add(250.50);
 
         // --- CLIENTE 1: CÁLCULOS (Mezclados con impresión) ---
-        double t1 = 0; // total
-        System.out.println("Procesando pedido para: " + c1_n);
-        System.out.println("ID Cliente: " + c1_id);
+        double total1 = 0; // total
+        System.out.println("Procesando pedido para: " + nombreCliente1);
+        System.out.println("ID Cliente: " + idCliente1);
 
-        for (int i = 0; i < p_n.size(); i++) {
-            t1 = t1 + p_p.get(i);
-            System.out.println("Item " + (i+1) + ": " + p_n.get(i) + " - " +
-            p_p.get(i) + " EUR");
+        for (int i = 0; i < preciosProductos.size(); i++) {
+            total1 = total1 + preciosProductos.get(i);
+            System.out.println("Item " + (i+1) + ": " + nombreProductos.get(i) + " - " +
+            preciosProductos.get(i) + " EUR");
         }
 
         // Lógica de descuento "hardcodeada"
-        if (t1 > 3000) {
+        if (total1 > 3000) {
             System.out.println("Aplica descuento por gran volumen (5%)");
-            t1 = t1 * 0.95;
+            total1 = total1 * 0.95;
         }
 
-        double t1_iva = t1 + (t1 * );
+        double totalIVA1 = total1 + (total1 * TASA_IVA);
 
-        System.out.println("Total Neto: " + t1);
-        System.out.println("Total con IVA (" + (v*100) + "%): " + t1_iva);
+        System.out.println("Total Neto: " + total1);
+        System.out.println("Total con IVA (" + (TASA_IVA*100) + "%): " + totalIVA1);
         System.out.println("--------------------------------------------------");
 
         // --- CLIENTE 1: GUARDADO EN ARCHIVO (Responsabilidad mezclada) ---
         try {
-            FileWriter myWriter = new FileWriter("pedido_" + c1_id + ".txt");
+            FileWriter myWriter = new FileWriter("pedido_" + idCliente1 + ".txt");
             myWriter.write("FACTURA\n");
-            myWriter.write("Cliente: " + c1_n + "\n");
-            myWriter.write("Direccion: " + c1_d + "\n");
-            myWriter.write("Total a pagar: " + t1_iva + "\n");
+            myWriter.write("Cliente: " + nombreCliente1 + "\n");
+            myWriter.write("Direccion: " + direccionCliente1 + "\n");
+            myWriter.write("Total a pagar: " + tasaIVA1 + "\n");
             myWriter.close();
             System.out.println("Archivo guardado correctamente.");
-        } catch (IOException e) {
+        } catch (IOException excepcion) {
             System.out.println("An error occurred.");
-            e.printStackTrace();
+            excepcion.printStackTrace();
         }
 
         System.out.println("\n\n"); // Espacios feos
