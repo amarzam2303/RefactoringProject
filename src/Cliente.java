@@ -13,7 +13,7 @@ public class Cliente{
         return nombre;
     }
 
-    public String getId(){
+    public String getIdentificador(){
         return id;
     }
 
